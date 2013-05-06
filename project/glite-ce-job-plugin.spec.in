@@ -1,0 +1,47 @@
+Summary: Job status plugin for CEMonitor
+Name: @PKGNAME@
+Version: @PKGVERSION@
+Release: @PKGRELEASE@
+License: Apache Software License
+Vendor: EMI
+URL: http://glite.cern.ch/
+Group: System Environment/Libraries
+BuildArch: noarch
+BuildRequires: maven
+Requires: glite-ce-cream, glite-ce-monitor, log4j
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+AutoReqProv: yes
+Source: %{name}.tar.gz
+
+%description
+The CREAM job plugin is a sensor for the CE monitor service
+that keeps track of the job status changes interacting with 
+the CREAM web application
+
+%prep
+ 
+
+%setup -c -q
+
+%build
+mvn @MVNOPTS@ compile
+
+%install
+rm -rf %{buildroot}
+mkdir -p %{buildroot}
+mvn @MVNOPTS@ install
+mkdir -p %{buildroot}/usr/share/java
+cp %{_builddir}/%{name}-%{version}/target/cream-job-plugin-@PKGVERSION@.jar %{buildroot}/usr/share/java/glite-ce-job-plugin.jar
+
+%clean
+rm -rf %{buildroot}
+
+%files
+%defattr(-,root,root)
+/usr/share/java/glite-ce-job-plugin.jar
+
+%changelog
+* Fri Aug 31 2012 CREAM group <cream-support@lists.infn.it> - @PKGVERSION@-@PKGRELEASE@
+- New major release
+
+
