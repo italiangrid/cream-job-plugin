@@ -4,7 +4,7 @@
 
   <groupId>org.glite.ce</groupId>
   <artifactId>cream-job-plugin</artifactId>
-  <version>1.16.1</version>
+  <version>1.14.1</version>
   <packaging>jar</packaging>
 
   <properties>
@@ -15,7 +15,7 @@
   <parent>
     <groupId>org.glite</groupId>
     <artifactId>cream-parent</artifactId>
-    <version>1.0.0</version>
+    <version>0.8.0</version>
   </parent>
 
   <scm>
